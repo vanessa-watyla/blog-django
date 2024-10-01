@@ -1,0 +1,209 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Material Design for Bootstrap</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  <header >
+    <!-- Intro settings -->
+    <style>
+      #intro {
+        /* Margin to fix overlapping fixed navbar */
+        margin-top: 58px;
+      }
+
+      @media (max-width: 991px) {
+        #intro {
+          /* Margin to fix overlapping fixed navbar */
+          margin-top: 45px;
+        }
+      }
+    </style>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top" >
+      <div class="container-fluid" >
+        <!-- Navbar brand -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+          aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarExample01">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" aria-current="page" href="{% url 'index' %}">Home</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="my-5 pt-5">
+    <div class="container">
+      <!--Section: Content-->
+      <section class="text-center">
+        {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-success" role="alert"> {{message}}</div>
+          <hr>
+          {% endfor %}
+        {% endif %}
+        {% block body %}
+
+        {% endblock %}
+        <h4 class="mb-5"><strong>BTS: Army Blog</strong></h4>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card" style="background-color: #d8c8da">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{% static 'img/bts2.png' %}" class="img-fluid" />
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">A ascensão mundial do grupo de k-pop BTS</h5>
+                <p class="card-text"> <br/>
+                  BTS é formado por sete integrantes: Jin, Suga, J-hope, Rap Monster, Jimin, V e Jungkook.
+                </p>
+                {% for post in post_template %}
+                  {% if post.id == 1 %} 
+                      <a href="{% url 'detalhe' post.id %}" class="btn btn-primary" style="background-color: #d050e0">Leia +</a>
+                  {% endif %}
+                {% endfor %}
+            </div> 
+          </div>
+        </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card" style="background-color: #d8c8da">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{% static 'img/jimin.jpg' %}" class="img-fluid" />
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Jimin: membro do BTS tem a música mais ouvida do mundo</h5>
+                <p class="card-text">
+                  A música "Who", de Jimin foi a música mais ouvida do mundo no Spotify em julho de 2024, permanecendo no topo do Top 50 — Mundo por oito dias
+                </p>
+                {% for post in post_template %}
+                  {% if post.id == 2 %}  
+                      <a href="{% url 'detalhe' post.id %}" class="btn btn-primary" style="background-color: #d050e0">Leia +</a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card" style="background-color: #d8c8da">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{% static 'img/jin.jpg' %}"class="img-fluid" />
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Jin, fala sobre álbum solo após alistamento militar</h5>
+                <p class="card-text">
+                  Jin, do BTS, falou sobre seu próximo álbum solo em sua primeira entrevista desde o retorno aos palcos. Em uma conversa com a Harper's Bazaar Korea.
+                </p>
+                {% for post in post_template %}
+                {% if post.id == 3 %}  
+                    <a href="{% url 'detalhe' post.id %}" class="btn btn-primary" style="background-color: #d050e0">Leia +</a>
+                {% endif %}
+              {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card" style="background-color: #d8c8da">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{% static 'img/rm.jpg' %}"class="img-fluid" />
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">O que sabemos sobre o documentário de RM</h5>
+                <p class="card-text">
+                  Produção foca processo de composição do segundo álbum solo do cantor.
+                </p>
+                {% for post in post_template %}
+                  {% if post.id == 4 %}  
+                      <a href="{% url 'detalhe' post.id %}" class="btn btn-primary" style="background-color: #d050e0">Leia +</a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card" style="background-color: #d8c8da">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{% static 'img/jhope.jpg' %}" class="img-fluid" />
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">“Hope On The Street”: documentário de J-Hope, do BTS, ganha data de estreia</h5>
+                <p class="card-text">
+                  Série documental de seis episódios destaca a história e o amor de J-Hope pela dança.
+                </p>
+                {% for post in post_template %}
+                {% if post.id == 5 %}  
+                    <a href="{% url 'detalhe' post.id %}" class="btn btn-primary" style="background-color: #d050e0">Leia +</a>
+                {% endif %}
+              {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card" style="background-color: #d8c8da">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{% static 'img/bts-logo.jpg' %}" class="img-fluid" />
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">BTS terá show e série de documentário em serviços de streaming da Disney</h5>
+                <p class="card-text">
+                  Série com músicas e filmagens do grupo sul-coreano ao longo dos últimos nove anos.
+                </p>
+                {% for post in post_template %}
+                  {% if post.id == 6 %}  
+                      <a href="{% url 'detalhe' post.id %}" class="btn btn-primary" style="background-color: #d050e0">Leia +</a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Content-->
+    </div>
+    
+  </main>
+
+ 
+  
+  <!--Main layout-->
+  <!-- Copyright -->
+  </footer>
+  <!--Footer-->
+  <!-- MDB -->
+  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

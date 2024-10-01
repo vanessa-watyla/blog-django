@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+    <div class="card mb-3" >
+      <img src="{{ post_template.imagem.url }}" class="rounded mx-auto d-block" width="500px"> 
+      <div class="card-body">
+        <h5 class="card-title">{{ post_template.titulo }}</h5>
+        <p class="card-text">{{ post_template.texto }}</p>
+        <p class="card-text"><small class="text-body-secondary">Publicada em: {{ post_template.pub_date|date:'d/m/Y H:i:s' }}</small></p>
+      </div>
+    </div>
+
+    <form method="post">
+      {% csrf_token %}
+      <textarea  style="width: 50%; display: block; margin: 0 auto;" name="comentario_texto" placeholder="Escreva seu comentário aqui" required></textarea>
+      <br/>
+      <button type="submit" class="btn btn-outline-primary"  style=" display: block; margin: 0 auto; border-color: #d8c8da; color: black;">Primary button</button>
+    </form>
+    
+    <h3>Comentários:</h3>
+    {% for comentario in opcoes_template %}
+      <div> 
+        <ul>
+            <li>{{ comentario.texto }}</li>
+        </ul>
+      </div>
+   
+    {% endfor %}
+ 
+
+
+
+{% endblock body %}
